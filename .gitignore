@@ -60,3 +60,8 @@ laradock/workspace/insecure_id_rsa.ppk
 laradock/workspace/insecure_id_rsa.pub
 
 laradock/.laradock/data/
+
+
+# その他
+.cursor/
+.cursorignore
