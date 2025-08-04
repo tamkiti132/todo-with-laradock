@@ -17,12 +17,12 @@ class TaskController extends Controller
     {
         $request->validate([
             'task_name' => 'required|string|max:255',
-            'due_date' => 'required|date',
+            'due_time' => 'required|date',
         ]);
 
         Task::create([
             'task_name' => $request->task_name,
-            'due_date' => $request->due_date,
+            'due_time' => $request->due_time,
         ]);
         return redirect()->route('tasks.index');
     }
