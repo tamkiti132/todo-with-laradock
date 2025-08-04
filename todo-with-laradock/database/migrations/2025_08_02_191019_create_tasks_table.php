@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('task_name', 255);
-            $table->dateTime('due_date');
+            $table->dateTime('due_time');
             $table->boolean('is_deleted')->default(false);
             $table->dateTime('created_at');
             $table->dateTime('updated_at');

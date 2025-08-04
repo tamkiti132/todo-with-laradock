@@ -16,21 +16,21 @@ class TaskSeeder extends Seeder
         $tasks = [
             [
                 'task_name' => 'Task 1',
-                'due_date' => '2025-08-01 00:00:00',
+                'due_time' => '2025-08-01 00:00:00',
                 'is_deleted' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'task_name' => 'Task 2',
-                'due_date' => '2025-08-02 00:00:00',
+                'due_time' => '2025-08-02 00:00:00',
                 'is_deleted' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'task_name' => 'Task 3',
-                'due_date' => '2025-08-03 00:00:00',
+                'due_time' => '2025-08-03 00:00:00',
                 'is_deleted' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
