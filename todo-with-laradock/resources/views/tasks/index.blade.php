@@ -18,7 +18,7 @@
             <div class="flex mb-2 flex-col gap-2">
                 <div>
                     <label for="task_name" class="text-sm text-gray-700 mb-1 block">タスク名</label>
-                    <input type="text" name="task_name" class="border border-gray-300 p-2 w-full">
+                    <input type="text" name="task_name" value="{{ old('task_name') }}" class="border border-gray-300 p-2 w-full">
                     @error('task_name')
                         <div class="text-red-500 text-sm mb-2">
                             {{ $message }}
@@ -27,12 +27,14 @@
                 </div>
                 <div>
                     <label for="due_time" class="text-sm text-gray-700 mb-1 block">期限</label>
-                    <input type="datetime-local" id="due_time" name="due_time" value="{{ now()->format('Y-m-d H:i') }}" class="border border-gray-300 p-2 mr-2">
+                    <input type="datetime-local" id="due_time" name="due_time" value="{{ old('due_time', now()->format('Y-m-d H:i')) }}" class="border border-gray-300 p-2">
                     @error('due_time')
                         <div class="text-red-500 text-sm mb-2">
                             {{ $message }}
                         </div>
                     @enderror
+                </div>
+                <div>
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">追加</button>
                 </div>
             </div>
