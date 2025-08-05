@@ -15,27 +15,33 @@
 
         <form action="{{ route('tasks.store') }}" method="post">
             @csrf
-            <div class="flex mb-2">
-                <input type="text" name="task_name" class="border border-gray-300 p-2 w-full" placeholder="タスク名">
-                <input type="datetime-local" name="due_time" class="border p-2 ml-2" placeholder="期限">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">追加</button>
+            <div class="flex mb-2 flex-col gap-2">
+                <div>
+                    <label for="task_name" class="text-sm text-gray-700 mb-1 block">タスク名</label>
+                    <input type="text" name="task_name" class="border border-gray-300 p-2 w-full">
+                </div>
+                <div>
+                    <label for="due_time" class="text-sm text-gray-700 mb-1 block">期限</label>
+                    <input type="datetime-local" id="due_time" name="due_time" value="{{ now()->format('Y-m-d H:i') }}" class="border border-gray-300 p-2 mr-2">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">追加</button>
+                </div>
             </div>
         </form>
+        <ul class="list-disc text-sm mt-10">
+            @foreach ($tasks as $task)
+                <li class="flex justify-between mb-2">
+                    <p>{{ $task->task_name }}: <span class="text-xs text-gray-500 ml-2">{{ $task->due_time }}</span></p>
+                    <div>
+                        <form action="{{ route('tasks.markAsDeleted', $task->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="bg-green-500 text-white px-2 py-1 rounded">Done</button>
+                        </form>
+                    </div>
+                </li>
+            @endforeach
+        </ul>
     </div>
 
-    <ul class="list-disc px-5 text-sm">
-        @foreach ($tasks as $task)
-            <li class="flex justify-between mb-2">
-                <p>{{ $task->task_name }}: <span class="text-xs text-gray-500 ml-2">{{ $task->due_time }}</span></p>
-                <div>
-                    <form action="{{ route('tasks.markAsDeleted', $task->id) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="bg-green-500 text-white px-2 py-1 rounded">Done</button>
-                    </form>
-                </div>
-            </li>
-        @endforeach
-    </ul>
 </body>
 </html>
