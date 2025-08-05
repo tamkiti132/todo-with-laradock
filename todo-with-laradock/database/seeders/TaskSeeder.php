@@ -35,6 +35,20 @@ class TaskSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'task_name' => 'Task 4',
+                'due_time' => '2025-08-04 00:00:00',
+                'is_deleted' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'task_name' => 'Task 5',
+                'due_time' => '2025-08-05 00:00:00',
+                'is_deleted' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         foreach ($tasks as $task) {
