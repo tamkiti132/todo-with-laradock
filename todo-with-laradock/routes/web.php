@@ -13,4 +13,4 @@ Route::delete('/tasks/{id}', [TaskController::class, 'markAsDeleted'])->name('ta
 
 Route::get('/tasks/viewTrash', [TaskController::class, 'viewTrash'])->name('tasks.viewTrash');
 Route::put('/tasks/{id}/recover', [TaskController::class, 'recover'])->name('tasks.recover');
-Route::delete('/tasks/delete', [TaskController::class, 'deleteTrash'])->name('tasks.deleteTrash');
+Route::delete('/tasks/trash/delete', [TaskController::class, 'deleteTrash'])->name('tasks.deleteTrash');
