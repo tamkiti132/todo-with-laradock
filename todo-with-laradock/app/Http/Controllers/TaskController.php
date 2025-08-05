@@ -27,10 +27,28 @@ class TaskController extends Controller
         return redirect()->route('tasks.index');
     }
 
-    public function destroy($id)
+    public function markAsDeleted($id)
     {
         Task::markAsDeleted($id);
         return redirect()->route('tasks.index');
+    }
+
+    public function viewTrash()
+    {
+        $tasks = Task::getTrashedTasks();
+        return view('tasks.trash', compact('tasks'));
+    }
+
+    public function recover($id)
+    {
+        Task::recoverTask($id);
+        return redirect()->route('tasks.index');
+    }
+
+    public function deleteTrash()
+    {
+        Task::deleteTrashTaskPermanently();
+        return redirect()->route('tasks.viewTrash');
     }
 
 }

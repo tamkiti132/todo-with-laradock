@@ -9,4 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
 Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
-Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+Route::delete('/tasks/{id}', [TaskController::class, 'markAsDeleted'])->name('tasks.markAsDeleted');
+
+Route::get('/tasks/viewTrash', [TaskController::class, 'viewTrash'])->name('tasks.viewTrash');
+Route::put('/tasks/{id}/recover', [TaskController::class, 'recover'])->name('tasks.recover');
+Route::delete('/tasks/delete', [TaskController::class, 'deleteTrash'])->name('tasks.deleteTrash');
