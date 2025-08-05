@@ -23,9 +23,18 @@
         </form>
     </div>
 
-    <ul>
+    <ul class="list-disc px-5 text-sm">
         @foreach ($tasks as $task)
-            <li>{{ $task->task_name }}</li>
+            <li class="flex justify-between mb-2">
+                <p>{{ $task->task_name }}: <span class="text-xs text-gray-500 ml-2">{{ $task->due_time }}</span></p>
+                <div>
+                    <form action="{{ route('tasks.markAsDeleted', $task->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="bg-green-500 text-white px-2 py-1 rounded">Done</button>
+                    </form>
+                </div>
+            </li>
         @endforeach
     </ul>
 </body>
